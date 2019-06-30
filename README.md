@@ -49,4 +49,5 @@ Similar to milestones, Spring Snapshots are hosted in a custom repository:
 @RestController - controller
 @RequestMapping - request url mapping handled by controller
 @Component (also called Beans) - components to inject
+@Component("componentName")
 @Autowired - inject annotated field

@@ -2,3 +2,26 @@
 When Spring application starts, it creates objects annotated by @RestController, @Component (also called Beans)
 , stores them in "Application Context".
 When creating Beans, Spring checks for fields or methods annotated with @Autowired and injects those references form "Application Context"
+
+Any Bean stored in Application context is given a name, and by default the name will be the name of the class in camel case
+	BeanClassName -> beanClassName
+You can also specify a bean name
+	@Component("beanName")
+
+If a method is annotated with @Autowired, it is executed on constructed object at application start-up, and all method parameters are 
+injected from "Application Context". This is valid for any method not just setters
+	@Autowired
+	public xxxx(MailSender mailsender){ <-- mailsender is injected
+		this.mailsender = mailsender;
+	}
+This is also valid for constructors. If there is only ONE constructor for the object, and this constructor has same parameters, these
+parameters will be injected even without @Autowired annotation. In case of many constructors, only one can be annotated with @Autowired
+
+If Application context contains multiple instances of the same type(interface), you can specify which instance to inject by naming
+the variable the same name as bean name
+	@Component("someBean")
+	public SomeMailSender implements MailSender{
+	...
+	@Autowire
+	private MailSender someBean;
+	
