@@ -1,0 +1,4 @@
+
+When Spring application starts, it creates objects annotated by @RestController, @Component (also called Beans)
+, stores them in "Application Context".
+When creating Beans, Spring checks for fields or methods annotated with @Autowired and injects those references form "Application Context"

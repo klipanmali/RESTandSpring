@@ -44,3 +44,9 @@ Similar to milestones, Spring Snapshots are hosted in a custom repository:
         <url>http://repo.spring.io/snapshot</url> 
     </repository>
 </repositories>
+
+
+@RestController - controller
+@RequestMapping - request url mapping handled by controller
+@Component (also called Beans) - components to inject
+@Autowired - inject annotated field

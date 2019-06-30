@@ -1,15 +1,16 @@
 package com.example.spring5andrest.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.spring5andrest.mail.MailSender;
-import com.example.spring5andrest.mail.MockMailSender;
 
 @RestController
 public class MailController {
 
-	private MailSender mailSender = new MockMailSender();
+	@Autowired
+	private MailSender mailSender;
 
 	@RequestMapping("/mail")
 	public String hello() {
