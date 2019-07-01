@@ -45,9 +45,22 @@ Similar to milestones, Spring Snapshots are hosted in a custom repository:
     </repository>
 </repositories>
 
+Spring Developer Tools
+https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<optional>true</optional>
+	</dependency>
+provide additional development-time features, automatically restart the app when the code is updated
 
-@RestController - controller
-@RequestMapping - request url mapping handled by controller
-@Component (also called Beans) - components to inject
-@Component("componentName")
 @Autowired - inject annotated field
+@Component (also called Beans) - components to inject
+@Component("componentName") -if name is not provided , component name is the same as class name written in camel case
+@Inject - for injecting, but @Autowired is little bit more powerful
+@Primary - in case of multiple beans, bean annotated with @Primary is injected
+@Qualifier(qualifierName) - qualifies what bean to inject
+@RequestMapping - request url mapping handled by controller
+@Resource -for injecting, but @Autowired is little bit more powerful
+@RestController - controller, controls the ULRs
+

@@ -1,5 +1,6 @@
 package com.example.spring5andrest.controllers;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +19,27 @@ public class MailController {
 
 	// @Autowired // single constructor desn't have to be annotated, it is the
 	// only constructor
-	public MailController(MailSender mailSender) {
-		this.mailSender = mailSender;
+	/*
+	 * public MailController(MailSender mailSender) { this.mailSender =
+	 * mailSender; }
+	 */
+
+	// one way to solve the problem of multiple beans is to use bean name as
+	// variable name, default one in this case
+	/*
+	 * public MailController(MailSender smtpMailSender) { this.mailSender =
+	 * smtpMailSender; }
+	 */
+
+	// multiple beans problem, named bean is used as variable name, unless there
+	// is @Primary bean
+	/*
+	 * public MailController(MailSender smtp) { this.mailSender = smtp; }
+	 */
+
+	// multiple beans solution using @Qualifier public
+	MailController(@Qualifier("smtpMail") MailSender smtp) {
+		this.mailSender = smtp;
 	}
 
 	@RequestMapping("/mail")

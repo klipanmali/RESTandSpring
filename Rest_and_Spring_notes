@@ -16,12 +16,19 @@ injected from "Application Context". This is valid for any method not just sette
 	}
 This is also valid for constructors. If there is only ONE constructor for the object, and this constructor has same parameters, these
 parameters will be injected even without @Autowired annotation. In case of many constructors, only one can be annotated with @Autowired
+Injection via Constructor is prefferd over field or method injection
 
 If Application context contains multiple instances of the same type(interface), you can specify which instance to inject by naming
-the variable the same name as bean name
+the variable the same name as bean name. If bean name is not provided , bean name is the same as class name written in camel case
 	@Component("someBean")
+	//default bean name would be someMailSender
 	public SomeMailSender implements MailSender{
 	...
 	@Autowire
 	private MailSender someBean;
+The other way is to annotate bean to inject with @Primary annotation
+One more way is to qualify bean with @Qualifier, and than use the Qualifier. If Bean is not annotated with @Qualifier, it still has by 
+default defined @Qualifier with default name (apparently doesn't work for me), class name in camel case 
+
+
 	
