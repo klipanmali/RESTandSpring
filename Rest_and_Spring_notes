@@ -30,5 +30,9 @@ The other way is to annotate bean to inject with @Primary annotation
 One more way is to qualify bean with @Qualifier, and than use the Qualifier. If Bean is not annotated with @Qualifier, it still has by 
 default defined @Qualifier with default name (apparently doesn't work for me), class name in camel case 
 
-
+Lets say you have some third party classes without @Component annotation and you still want to make beans out of this classes.
+You can annotate some class with @Configutaion annotation and define methods annotated with @Bean annotation to create these beans
+Beans created with @Bean annotated methods have name equal to the name of annotated method
+Instead @Configuration annotation, @Comonent annotation can be used as well, but this is not advisable
+You can have as many @Configuration classes as you like
 	

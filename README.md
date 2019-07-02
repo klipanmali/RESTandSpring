@@ -55,12 +55,17 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtoo
 provide additional development-time features, automatically restart the app when the code is updated
 
 @Autowired - inject annotated field
+@Bean - annotated methods creates beans from third party classes, with default bean equal to the name of the annotated method
 @Component (also called Beans) - components to inject
 @Component("componentName") -if name is not provided , component name is the same as class name written in camel case
+@Configuration - class annotated with this annotation is used to create beans form some third party classes
 @Inject - for injecting, but @Autowired is little bit more powerful
 @Primary - in case of multiple beans, bean annotated with @Primary is injected
 @Qualifier(qualifierName) - qualifies what bean to inject
 @RequestMapping - request url mapping handled by controller
 @Resource -for injecting, but @Autowired is little bit more powerful
 @RestController - controller, controls the ULRs
-
+@SpringBootApplication - package containing @SpringBootApplication class and all sub packages are scanned for classes to add in 
+		"Aplication context" 
+@SpringBootApplication(scanBasePackageClasses = {SomeClcass.class}) - package containing SomaClass.class and all the sub packages are
+		scanned for classes to add in "Aplication context", you can specify a list of classes

@@ -1,6 +1,5 @@
 package com.example.spring5andrest.controllers;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,10 +25,9 @@ public class MailController {
 
 	// one way to solve the problem of multiple beans is to use bean name as
 	// variable name, default one in this case
-	/*
-	 * public MailController(MailSender smtpMailSender) { this.mailSender =
-	 * smtpMailSender; }
-	 */
+	public MailController(MailSender smtpMailSender) {
+		this.mailSender = smtpMailSender;
+	}
 
 	// multiple beans problem, named bean is used as variable name, unless there
 	// is @Primary bean
@@ -38,10 +36,10 @@ public class MailController {
 	 */
 
 	// multiple beans solution using @Qualifier public
-	MailController(@Qualifier("smtpMail") MailSender smtp) {
-		this.mailSender = smtp;
-	}
-
+	/*
+	 * MailController(@Qualifier("smtpMail") MailSender smtp) { this.mailSender
+	 * = smtp; }
+	 */
 	@RequestMapping("/mail")
 	public String hello() {
 
