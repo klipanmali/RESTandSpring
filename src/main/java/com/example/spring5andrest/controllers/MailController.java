@@ -1,5 +1,6 @@
 package com.example.spring5andrest.controllers;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,6 +8,9 @@ import com.example.spring5andrest.mail.MailSender;
 
 @RestController
 public class MailController {
+
+	@Value("${app.name}")
+	private String appName;
 
 	// @Autowired
 	private MailSender mailSender;
@@ -35,10 +39,10 @@ public class MailController {
 	 * public MailController(MailSender smtp) { this.mailSender = smtp; }
 	 */
 
-	// multiple beans solution using @Qualifier public
+	// multiple beans solution using @Qualifier
 	/*
-	 * MailController(@Qualifier("smtpMail") MailSender smtp) { this.mailSender
-	 * = smtp; }
+	 * public MailController(@Qualifier("smtpMail") MailSender smtp) {
+	 * this.mailSender = smtp; }
 	 */
 	@RequestMapping("/mail")
 	public String hello() {
@@ -46,7 +50,7 @@ public class MailController {
 		mailSender.send("mail@example.com", "A test mail",
 				"Body of a test mail");
 
-		return "Mail sent";
+		return "Mail sent woth " + appName;
 	}
 
 }

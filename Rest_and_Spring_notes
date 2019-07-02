@@ -32,7 +32,15 @@ default defined @Qualifier with default name (apparently doesn't work for me), c
 
 Lets say you have some third party classes without @Component annotation and you still want to make beans out of this classes.
 You can annotate some class with @Configutaion annotation and define methods annotated with @Bean annotation to create these beans
-Beans created with @Bean annotated methods have name equal to the name of annotated method
+Beans created with @Bean annotated methods have name equal to the name of annotated method.
+Beans created with the @Configuration  class "overrides" @Component created beans heaving the same name.
 Instead @Configuration annotation, @Comonent annotation can be used as well, but this is not advisable
 You can have as many @Configuration classes as you like
+
+aplication.preperties can be used to store specific application properties. The simplest way to access these properties is by
+@Value annotated variable. Application properties from the external target directory overrides properties defined inside the project
+
+Sprint application can behave differently in different environments by using profiles like dev(development),test,prod(production).
+For different environment different beans can be used. This is controlled by spring.profiles.active application property which can be
+overridden by a command line switch.
 	
