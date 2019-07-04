@@ -44,4 +44,5 @@ Spring application can behave differently in different environments by using pro
 For different environment different beans can be used. This is controlled by spring.profiles.active application property which can be
 overridden by a command line switch. Profiles are applied by @Profile annotation. If spring.profile.active is not provided, Spring
 assumes the active profile to be "default"
+The other way to start one beans in one situation and the other beans in other situation is by using @Conditional annotation
 	

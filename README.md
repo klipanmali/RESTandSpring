@@ -58,6 +58,10 @@ provide additional development-time features, automatically restart the app when
 @Bean - annotated methods creates beans from third party classes, with default bean equal to the name of the annotated method
 @Component (also called Beans) - components to inject
 @Component("componentName") -if name is not provided , component name is the same as class name written in camel case
+@Conditional - another way to include/exclude beans apart from @Profile, based on conditions you provide
+@ConditionalOnClass
+@ConditionalOnProperty
+@ConditionalOnMissingBean
 @Configuration - class annotated with this annotation is used to create beans form some third party classes
 @Inject - for injecting, but @Autowired is little bit more powerful
 @Primary - in case of multiple beans, bean annotated with @Primary is injected
