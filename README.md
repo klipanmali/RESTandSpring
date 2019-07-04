@@ -61,6 +61,7 @@ provide additional development-time features, automatically restart the app when
 @Configuration - class annotated with this annotation is used to create beans form some third party classes
 @Inject - for injecting, but @Autowired is little bit more powerful
 @Primary - in case of multiple beans, bean annotated with @Primary is injected
+@Profile("profileName") - for which profile to start this bean
 @Qualifier(qualifierName) - qualifies what bean to inject
 @RequestMapping - request url mapping handled by controller
 @Resource -for injecting, but @Autowired is little bit more powerful

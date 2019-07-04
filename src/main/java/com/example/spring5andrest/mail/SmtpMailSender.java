@@ -2,9 +2,8 @@ package com.example.spring5andrest.mail;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Component;
 
-@Component // default bean name is smtpMailSender
+// @Component // default bean name is smtpMailSender
 // @Component("smtp")
 // @Qualifier("smtpMail")
 public class SmtpMailSender implements MailSender {

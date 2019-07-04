@@ -40,7 +40,8 @@ You can have as many @Configuration classes as you like
 aplication.preperties can be used to store specific application properties. The simplest way to access these properties is by
 @Value annotated variable. Application properties from the external target directory overrides properties defined inside the project
 
-Sprint application can behave differently in different environments by using profiles like dev(development),test,prod(production).
+Spring application can behave differently in different environments by using profiles like dev(development),test,prod(production).
 For different environment different beans can be used. This is controlled by spring.profiles.active application property which can be
-overridden by a command line switch.
+overridden by a command line switch. Profiles are applied by @Profile annotation. If spring.profile.active is not provided, Spring
+assumes the active profile to be "default"
 	
