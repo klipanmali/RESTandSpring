@@ -1,5 +1,7 @@
 package com.example.spring5andrest.controllers;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,9 +47,9 @@ public class MailController {
 	 * this.mailSender = smtp; }
 	 */
 	@RequestMapping("/mail")
-	public String hello() {
+	public String hello() throws MessagingException {
 
-		mailSender.send("mail@example.com", "A test mail",
+		mailSender.send("etkhrto@gmail.com", "A test mail",
 				"Body of a test mail");
 
 		return "Mail sent woth " + appName;

@@ -3,9 +3,14 @@ package com.example.spring5andrest.mail;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @Configuration
 public class MailConfig {
+
+	// this would be the standard way to inject javaMailSender
+	// @Autowired
+	// private JavaMailSender javaMailSender;
 
 	@Bean
 	// @Profile("dev") // include this bean for profile dev
@@ -16,10 +21,13 @@ public class MailConfig {
 		return new MockMailSender();
 	}
 
+	// better way of injecting javaMailSender is to add it as parameter to the
+	// method. For @Bean annotated methods, any method parameters are
+	// automatically injected by Spring
 	@Bean
 	// @Profile("!dev") // include this bean for any profile other than dev
 	@ConditionalOnProperty("spring.mail.host")
-	public MailSender smtpMailSender() {
-		return new SmtpMailSender();
+	public MailSender smtpMailSender(JavaMailSender javaMailSender) {
+		return new SmtpMailSender(javaMailSender);
 	}
 }
