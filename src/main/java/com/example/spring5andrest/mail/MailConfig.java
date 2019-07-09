@@ -17,7 +17,20 @@ public class MailConfig {
 	// there is no simple way to say if "spring.mail.host" is missing, "foo" is
 	// some meaningless value
 	@ConditionalOnProperty(name = "spring.mail.host", havingValue = "foo", matchIfMissing = true)
+	// one way of injecting "demoBean" into "mockMailSender" is
+	// by method parameter:
+	// public MailSender mockMailSender(DemoBean demoBean) {
 	public MailSender mockMailSender() {
+
+		// since class is @Configuration, @Bean methods are executed at Spring
+		// startup, created beans are added to the "Application context"
+		// and the result of the methods is cached.
+		// if demoBean is called again, cached result is returned, method
+		// is not re executed
+		// this is valid only for @Configuration classes, not for @Component
+		// classes
+		demoBean();
+
 		return new MockMailSender();
 	}
 
@@ -28,6 +41,13 @@ public class MailConfig {
 	// @Profile("!dev") // include this bean for any profile other than dev
 	@ConditionalOnProperty("spring.mail.host")
 	public MailSender smtpMailSender(JavaMailSender javaMailSender) {
+
 		return new SmtpMailSender(javaMailSender);
+
+	}
+
+	@Bean
+	public DemoBean demoBean() {
+		return new DemoBean();
 	}
 }

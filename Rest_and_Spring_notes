@@ -45,4 +45,13 @@ For different environment different beans can be used. This is controlled by spr
 overridden by a command line switch. Profiles are applied by @Profile annotation. If spring.profile.active is not provided, Spring
 assumes the active profile to be "default"
 The other way to start one beans in one situation and the other beans in other situation is by using @Conditional annotation
+
+For @Bean annotated methods, method parameters are automatically injected by a Spring (Beans ...whatever)
+For @Configuration annotated classes, @Bean annotated methods are executed at the Spring startup, created beans are stored
+in "Application context", and result of these methods are cached, so the next time when method is executed cached result(created Bean)
+is returned, method is not executed again. this is not valid for @Component annotated classes
+
+
+
+
 	

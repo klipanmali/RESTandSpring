@@ -71,6 +71,6 @@ provide additional development-time features, automatically restart the app when
 @Resource -for injecting, but @Autowired is little bit more powerful
 @RestController - controller, controls the ULRs
 @SpringBootApplication - package containing @SpringBootApplication class and all sub packages are scanned for classes to add in 
-		"Aplication context" 
+		"Application context" 
 @SpringBootApplication(scanBasePackageClasses = {SomeClcass.class}) - package containing SomaClass.class and all the sub packages are
-		scanned for classes to add in "Aplication context", you can specify a list of classes
+		scanned for classes to add in "Application context", you can specify a list of classes
