@@ -62,15 +62,21 @@ provide additional development-time features, automatically restart the app when
 @ConditionalOnClass
 @ConditionalOnProperty
 @ConditionalOnMissingBean
-@Configuration - class annotated with this annotation is used to create beans form some third party classes
+@Configuration - class annotated with this annotation is used to create beans from some third party classes
 @Inject - for injecting, but @Autowired is little bit more powerful
 @Primary - in case of multiple beans, bean annotated with @Primary is injected
 @Profile("profileName") - for which profile to start this bean
 @Qualifier(qualifierName) - qualifies what bean to inject
 @RequestMapping - request url mapping handled by controller
 @Resource -for injecting, but @Autowired is little bit more powerful
-@RestController - controller, controls the ULRs
+@RestController - controller, controls the ULRs, combines @Controller and @ResponseBody, two annotations that results in
+		web requests returning data rather than view(MVC)
 @SpringBootApplication - package containing @SpringBootApplication class and all sub packages are scanned for classes to add in 
 		"Application context" 
+		- combines @Configuration - tags the class as a source of bean definitions for the application context
+		- @EnabeAutiConfiguration - tells Spring Boot to start adding beans based on classpath settings, other beans and various 
+					property settings
+		- @ComponentScan - tells Spring to look for other components, configurations and services in the package, allowing it to
+					find controllers 
 @SpringBootApplication(scanBasePackageClasses = {SomeClcass.class}) - package containing SomaClass.class and all the sub packages are
 		scanned for classes to add in "Application context", you can specify a list of classes
